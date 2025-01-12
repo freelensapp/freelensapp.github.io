@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(180deg, #009688 0%, #f4f4f4 100%);
+}
+
+header {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    width: 100%;
+    color: white;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25)); /* Attorno al logo */
+}
+
+.github-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); /* Ombra interna su tutto il perimetro del box */
+    width: 90%;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.screenshot img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: #009688;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .github-container {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 75px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+}
