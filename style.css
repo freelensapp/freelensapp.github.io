@@ -37,7 +37,7 @@ h2 {
 
 .github-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 main {
@@ -47,6 +47,7 @@ main {
     background-color: white;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); /* Ombra interna su tutto il perimetro del box */
     width: 90%;
+    border-radius: 8px; /* Aggiunto bordo arrotondato */
 }
 
 .description {
@@ -59,6 +60,87 @@ main {
     margin-bottom: 20px;
 }
 
+.download-section {
+    text-align: center;
+    margin-top: -30px;
+}
+
+.download-container {
+    position: relative;
+    display: inline-block;
+}
+
+.download-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px; /* Aggiunto bordo arrotondato */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunta ombra al pulsante */
+}
+
+.download-button:hover {
+    background-color: #00695c;
+}
+
+.arrow {
+    display: inline-block;
+    margin-left: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    padding: 4px;
+    transition: transform 0.2s;
+}
+
+.arrow.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.arrow.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+#download-links {
+    display: none;
+    background-color: #ffffff; /* Modificato a bianco per maggiore contrasto */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ccc; /* Aggiunto bordo */
+    border-radius: 4px; /* Aggiunto bordo arrotondato */
+    margin-bottom: 20px; /* Aggiunto margine inferiore */
+    max-height: calc(100vh - 150px); /* Limite altezza massima del pannellino */
+    overflow-y: auto; /* Permette lo scorrimento verticale */
+}
+
+#download-links.integrated {
+    position: static;
+    transform: none;
+    margin: 10px auto;
+    max-height: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiorna ombra */
+}
+
+#download-links a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#download-links a:hover {
+    background-color: #f1f1f1;
+}
+
 footer {
     text-align: center;
     padding: 10px;
@@ -69,7 +151,17 @@ footer {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .github-container {
-        margin-top: 10px;
+        margin-top: 0px;
+    }
+
+    .download-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .arrow {
+        border-width: 0 1.5px 1.5px 0;
+        padding: 3px;
     }
 }
 
@@ -88,5 +180,10 @@ footer {
 
     h2 {
         font-size: 1.2em;
+    }
+
+    .download-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
     }
 }

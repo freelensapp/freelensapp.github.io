@@ -14,7 +14,7 @@
         <h2>Free Open Source Kubernetes IDE</h2>
     </header>
     <div class="github-container">
-        <a class="github-button" href="https://github.com/freelensapp/freelens" data-show-count="true" aria-label="Free Open Source Kubernetes IDE">Github</a>
+        <a class="github-button" href="https://github.com/freelensapp/freelens" data-show-count="true" data-size="large" aria-label="Free Open Source Kubernetes IDE">Github</a>
     </div>
     <main>
         <section class="description">
@@ -23,9 +23,51 @@
         <section class="screenshot">
             <img src="images/freelens-screenshot.png" alt="Freelens Application Screenshot">
         </section>
+        <section class="download-section">
+            <p>Freelens is a free Kubernetes UI for Linux, MacOS and Windows</p>
+            <div class="download-container">
+                <button id="download-button" class="download-button">Download <span class="arrow down"></span></button>
+                <div id="download-links" class="integrated">
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-amd64.AppImage">Linux amd64 AppImage</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-amd64.deb">Linux amd64 .deb</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-amd64.rpm">Linux amd64 .rpm</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-arm64.AppImage">Linux arm64 AppImage</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-arm64.deb">Linux arm64 .deb</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-arm64.rpm">Linux amd64 .rpm</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-linux-arm64.rpm">Linux amd64 .rpm</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-macos-amd64.dmg">MacOS amd64 .dmg</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-macos-amd64.pkg">MacOS amd64 .pkg</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-macos-arm64.dmg">MacOS arm64 .dmg</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-macos-arm64.pkg">MacOS arm64 .pkg</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-windows-amd64.exe">Windows amd64 .exe</a>
+                    <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.1/Freelens-0.1.1-windows-amd64.msi">Windows amd64 .msi</a>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2023-2025 Freelens Authors</p>
     </footer>
+    <script>
+        document.getElementById('download-button').addEventListener('click', function() {
+            var links = document.getElementById('download-links');
+            if (links.style.display === 'none' || links.style.display === '') {
+                links.style.display = 'block';
+                this.querySelector('.arrow').classList.add('up');
+                scrollToSection('download-links');
+            } else {
+                links.style.display = 'none';
+                this.querySelector('.arrow').classList.remove('up');
+            }
+        });
+
+        function scrollToSection(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.getBoundingClientRect().top + window.scrollY - 80,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
