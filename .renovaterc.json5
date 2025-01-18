@@ -7,21 +7,41 @@
   "addLabels": [
     "renovate"
   ],
-  "automerge": true,
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchDepNames": [
+        "freelens"
+      ],
+      "automerge": true
+    }
+  ],
   "customManagers": [
+    // bundled freelens-k8s-proxy
+    {
+      "customType": "regex",
+      "extractVersionTemplate": "^(?<version>.*)$",
+      "fileMatch": [
+        "\\.html$"
+      ],
+      "matchStrings": [
+        "(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "freelensapp/freelens",
+      "versioningTemplate": "semver",
+    },
     // renovate hints after comment
     {
       "customType": "regex",
       "extractVersionTemplate": "^v?(?<version>.*)$",
       "fileMatch": [
-        ".*\\.html$",
         ".*\\.ya?ml$",
         "^\\.trunk/trunk.yaml",
         "^\\.tool-versions$"
       ],
       "matchStrings": [
         "(\\s+|.*?@)(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n",
-        "\"(?<currentValue>\\S+)\";?\\s*//\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
