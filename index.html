@@ -44,45 +44,43 @@
           </button>
           <div id="download-links" class="integrated">
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.AppImage"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-amd64.AppImage"
               >Linux amd64 AppImage</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.deb"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-amd64.deb"
               >Linux amd64 .deb</a
             >
-            <!--  <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.rpm">Linux amd64 .rpm</a> -->
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.AppImage"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-amd64.rpm"
+              >Linux amd64 .rpm</a
+            >
+            <a
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-arm64.AppImage"
               >Linux arm64 AppImage</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.deb"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-arm64.deb"
               >Linux arm64 .deb</a
             >
-            <!-- <a href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.rpm">Linux amd64 .rpm</a> -->
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-amd64.dmg"
-              >MacOS amd64 .dmg</a
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-linux-arm64.rpm"
+              >Linux arm64 .rpm</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-amd64.pkg"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-macos-amd64.pkg"
               >MacOS amd64 .pkg</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-arm64.dmg"
-              >MacOS arm64 .dmg</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-arm64.pkg"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-macos-arm64.pkg"
               >MacOS arm64 .pkg</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.exe"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-windows-amd64.exe"
               >Windows amd64 .exe</a
             >
             <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.msi"
+              href="https://github.com/freelensapp/freelens/releases/download/vVERSION/Freelens-VERSION-windows-amd64.msi"
               >Windows amd64 .msi</a
             >
           </div>
@@ -113,6 +111,14 @@
           top: element.getBoundingClientRect().top + window.scrollY - 80,
           behavior: "smooth",
         });
+      }
+
+      const version = "0.1.1"; // # datasource=github-releases depName=freelensapp/freelens
+      const downloadLinks = document
+        .getElementById("download-links")
+        .getElementsByTagName("a");
+      for (let link of downloadLinks) {
+        link.href = link.href.replace(/VERSION/g, version);
       }
     </script>
   </body>
