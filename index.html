@@ -42,53 +42,98 @@
       </section>
       <section class="download-section">
         <p>Freelens is a free Kubernetes UI for Linux, MacOS and Windows</p>
-        <div class="download-container">
-          <button id="download-button" class="download-button">
-            Download <span class="arrow down"></span>
-          </button>
-          <div id="download-links" class="integrated">
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.AppImage"
-              >Linux amd64 AppImage</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.deb"
-              >Linux amd64 .deb</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.rpm"
-              >Linux amd64 .rpm</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.AppImage"
-              >Linux arm64 AppImage</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.deb"
-              >Linux arm64 .deb</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.rpm"
-              >Linux arm64 .rpm</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-amd64.pkg"
-              >MacOS amd64 .pkg</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-arm64.pkg"
-              >MacOS arm64 .pkg</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.exe"
-              >Windows amd64 .exe</a
-            >
-            <a
-              href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.msi"
-              >Windows amd64 .msi</a
-            >
-          </div>
-        </div>
+        <table>
+          <tr>
+            <td>
+              <button id="macos-download-button" class="download-button">
+                <ion-icon name="logo-apple"></ion-icon> Download for Mac<span
+                  class="arrow down"
+                ></span>
+              </button>
+            </td>
+            <td>
+              <button id="windows-download-button" class="download-button">
+                <ion-icon name="logo-windows"></ion-icon> Download for
+                Windows<span class="arrow down"></span>
+              </button>
+            </td>
+            <td>
+              <button id="linux-download-button" class="download-button">
+                <ion-icon name="logo-tux"></ion-icon> Download for Linux<span
+                  class="arrow down"
+                ></span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="download-container">
+                <div id="macos-download-links" class="download-links">
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-arm64.pkg"
+                    >PKG installer for M1 or newer</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-arm64.dmg"
+                    >DMG image for M1 or newer</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-amd64.pkg"
+                    >PKG installer for Intel-based</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-macos-amd64.dmg"
+                    >DMG image for Intel-based</a
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="download-container">
+                <div id="windows-download-links" class="download-links">
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.exe"
+                    >EXE installer for x64</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-windows-amd64.msi"
+                    >MSI installer for x64</a
+                  >
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="download-container">
+                <div id="linux-download-links" class="download-links">
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.AppImage"
+                    >AppImage for amd64 (x86_64)</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.deb"
+                    >DEB package for amd64 (x86_64)</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.rpm"
+                    >RPM package for amd64 (x86_64)</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.AppImage"
+                    >AppImage for arm64 (aarch64)</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.deb"
+                    >DEB package for arm64 (aarch64)</a
+                  >
+                  <a
+                    href="https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.rpm"
+                    >RPM package for arm64 (aarch64)</a
+                  >
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
       </section>
     </main>
     <footer>
@@ -96,17 +141,81 @@
     </footer>
     <script>
       document
-        .getElementById("download-button")
+        .getElementById("macos-download-button")
         .addEventListener("click", function () {
-          var links = document.getElementById("download-links");
+          var links = document.getElementById("macos-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
             this.querySelector(".arrow").classList.add("up");
-            scrollToSection("download-links");
+            scrollToSection("macos-download-links");
           } else {
             links.style.display = "none";
             this.querySelector(".arrow").classList.remove("up");
           }
+          document.getElementById("windows-download-links").style.display =
+            "none";
+          document
+            .getElementById("windows-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
+          document.getElementById("linux-download-links").style.display =
+            "none";
+          document
+            .getElementById("linux-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
+        });
+
+      document
+        .getElementById("windows-download-button")
+        .addEventListener("click", function () {
+          var links = document.getElementById("windows-download-links");
+          if (links.style.display === "none" || links.style.display === "") {
+            links.style.display = "block";
+            this.querySelector(".arrow").classList.add("up");
+            scrollToSection("windows-download-links");
+          } else {
+            links.style.display = "none";
+            this.querySelector(".arrow").classList.remove("up");
+          }
+          document.getElementById("macos-download-links").style.display =
+            "none";
+          document
+            .getElementById("macos-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
+          document.getElementById("linux-download-links").style.display =
+            "none";
+          document
+            .getElementById("linux-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
+        });
+
+      document
+        .getElementById("linux-download-button")
+        .addEventListener("click", function () {
+          var links = document.getElementById("linux-download-links");
+          if (links.style.display === "none" || links.style.display === "") {
+            links.style.display = "block";
+            this.querySelector(".arrow").classList.add("up");
+            scrollToSection("linux-download-links");
+          } else {
+            links.style.display = "none";
+            this.querySelector(".arrow").classList.remove("up");
+          }
+          document.getElementById("macos-download-links").style.display =
+            "none";
+          document
+            .getElementById("macos-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
+          document.getElementById("windows-download-links").style.display =
+            "none";
+          document
+            .getElementById("windows-download-button")
+            .querySelector(".arrow")
+            .classList.remove("up");
         });
 
       function scrollToSection(id) {
@@ -117,5 +226,13 @@
         });
       }
     </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
