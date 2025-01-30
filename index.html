@@ -8,6 +8,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Website verification abe7a4da-07a6-4a85-ad59-0c135521ee62 -->
   </head>
+
   <body>
     <header>
       <img src="images/freelens-logo.png" alt="Freelens Logo" class="logo" />
@@ -49,8 +50,9 @@
       </section>
       <section class="screenshot">
         <img
-          src="images/freelens-screenshot.png"
+          src="images/freelens-screenshot-macos.png"
           alt="Freelens Application Screenshot"
+          id="screenshot"
         />
       </section>
       <section class="download-section">
@@ -160,8 +162,26 @@
     </footer>
     <script>
       document
+        .getElementById("screenshot")
+        .addEventListener("click", function () {
+          console.log(this.src);
+          if (this.src.includes("macos")) {
+            document.getElementById("screenshot").src =
+              "images/freelens-screenshot-windows.png";
+          } else if (this.src.includes("windows")) {
+            document.getElementById("screenshot").src =
+              "images/freelens-screenshot-linux.png";
+          } else if (this.src.includes("linux")) {
+            document.getElementById("screenshot").src =
+              "images/freelens-screenshot-macos.png";
+          }
+        });
+
+      document
         .getElementById("macos-download-button")
         .addEventListener("click", function () {
+          document.getElementById("screenshot").src =
+            "images/freelens-screenshot-macos.png";
           var links = document.getElementById("macos-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
@@ -188,6 +208,8 @@
       document
         .getElementById("windows-download-button")
         .addEventListener("click", function () {
+          document.getElementById("screenshot").src =
+            "images/freelens-screenshot-windows.png";
           var links = document.getElementById("windows-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
@@ -214,6 +236,8 @@
       document
         .getElementById("linux-download-button")
         .addEventListener("click", function () {
+          document.getElementById("screenshot").src =
+            "images/freelens-screenshot-linux.png";
           var links = document.getElementById("linux-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
