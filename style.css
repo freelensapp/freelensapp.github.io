@@ -86,7 +86,6 @@ table {
   font-size: 1em;
   border-radius: 4px; /* Aggiunto bordo arrotondato */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunta ombra al pulsante */
-  white-space: nowrap;
 }
 
 .download-button:hover {
@@ -160,6 +159,12 @@ footer {
 }
 
 /* Media Queries for Responsiveness */
+@media (min-width: 870) {
+  .download-button {
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 768px) {
   .github-container {
     margin-top: 0px;
