@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Freelens - A Graphical IDE for Kubernetes</title>
-    <link rel="stylesheet" href="style.css?rev=4" />
+    <link rel="stylesheet" href="style.css?rev=5" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0/css/bulma.min.css"
@@ -56,7 +56,8 @@
       <section class="description">
         <p>
           Freelens is a Kubernetes IDE that provides a graphical interface for
-          managing and monitoring Kubernetes clusters.
+          managing and monitoring Kubernetes clusters. Freelens is maintained by
+          the community.
         </p>
       </section>
       <section class="screenshot">
@@ -67,7 +68,6 @@
         />
       </section>
       <section class="download-section">
-        <p>Freelens is maintained by the community.</p>
         <table>
           <tr>
             <td>
@@ -204,7 +204,6 @@
       document
         .getElementById("screenshot")
         .addEventListener("click", function () {
-          console.log(this.src);
           if (this.src.includes("macos")) {
             document.getElementById("screenshot").src =
               "images/freelens-screenshot-windows.png";
@@ -219,9 +218,13 @@
 
       document
         .getElementById("macos-download-button")
-        .addEventListener("click", function () {
+        .addEventListener("mouseover", function () {
           document.getElementById("screenshot").src =
             "images/freelens-screenshot-macos.png";
+        });
+      document
+        .getElementById("macos-download-button")
+        .addEventListener("click", function () {
           var links = document.getElementById("macos-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
@@ -247,9 +250,13 @@
 
       document
         .getElementById("windows-download-button")
-        .addEventListener("click", function () {
+        .addEventListener("mouseover", function () {
           document.getElementById("screenshot").src =
             "images/freelens-screenshot-windows.png";
+        });
+      document
+        .getElementById("windows-download-button")
+        .addEventListener("click", function () {
           var links = document.getElementById("windows-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
@@ -275,9 +282,13 @@
 
       document
         .getElementById("linux-download-button")
-        .addEventListener("click", function () {
+        .addEventListener("mouseover", function () {
           document.getElementById("screenshot").src =
             "images/freelens-screenshot-linux.png";
+        });
+      document
+        .getElementById("linux-download-button")
+        .addEventListener("click", function () {
           var links = document.getElementById("linux-download-links");
           if (links.style.display === "none" || links.style.display === "") {
             links.style.display = "block";
