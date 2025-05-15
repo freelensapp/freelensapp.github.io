@@ -42,35 +42,6 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Get pnpm cache directory
-        shell: bash
-        run: echo "pnpm_cache_dir=$(pnpm store path)" >> ${GITHUB_ENV}
-
-      - name: Use pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.pnpm_cache_dir }}
-          key: ${{ matrix.os }}-${{ matrix.arch }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ matrix.os }}-${{ matrix.arch }}-node-
-
-      - name: Install pnpm dependencies
-        id: install-pnpm
-        run: timeout 300 pnpm install --color=always --prefer-offline --frozen-lockfile
-        continue-on-error: true
-
-      - name: Install pnpm dependencies (retry)
-        if: steps.install-pnpm.outcome == 'failure'
-        run: timeout 300 pnpm install --color=always --prefer-offline --frozen-lockfile
-
       - name: Set up Trunk
         run: curl https://get.trunk.io -fsSL | bash -s -- -y
 
