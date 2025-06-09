@@ -21,8 +21,8 @@
     {
       "customType": "regex",
       "extractVersionTemplate": "^(?<version>.*)$",
-      "fileMatch": [
-        "\\.html$"
+      "managerFilePatterns": [
+        "/\\.html$/"
       ],
       "matchStrings": [
         "(?<currentValue>\\d+\\.\\d+\\.\\d+)"
@@ -35,10 +35,10 @@
     {
       "customType": "regex",
       "extractVersionTemplate": "^v?(?<version>.*)$",
-      "fileMatch": [
-        ".*\\.ya?ml$",
-        "^\\.trunk/trunk.yaml",
-        "^\\.tool-versions$"
+      "managerFilePatterns": [
+        "/.*\\.ya?ml$/",
+        "/^\\.trunk/trunk.yaml/",
+        "/^\\.tool-versions$/"
       ],
       "matchStrings": [
         "(\\s+|.*?@)(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n",
