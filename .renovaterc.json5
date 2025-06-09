@@ -1,49 +1,47 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":semanticCommitsDisabled"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    ':semanticCommitsDisabled',
   ],
-  "addLabels": [
-    "renovate"
+  addLabels: [
+    'renovate',
   ],
-  "platformAutomerge": true,
-  "packageRules": [
+  platformAutomerge: true,
+  packageRules: [
     {
-      "matchDepNames": [
-        "freelens"
+      matchDepNames: [
+        'freelens',
       ],
-      "automerge": true
-    }
-  ],
-  "customManagers": [
-    // bundled freelens-k8s-proxy
-    {
-      "customType": "regex",
-      "extractVersionTemplate": "^(?<version>.*)$",
-      "fileMatch": [
-        "\\.html$"
-      ],
-      "matchStrings": [
-        "(?<currentValue>\\d+\\.\\d+\\.\\d+)"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "freelensapp/freelens",
-      "versioningTemplate": "semver",
+      automerge: true,
     },
-    // renovate hints after comment
+  ],
+  customManagers: [
     {
-      "customType": "regex",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "fileMatch": [
-        ".*\\.ya?ml$",
-        "^\\.trunk/trunk.yaml",
-        "^\\.tool-versions$"
+      customType: 'regex',
+      extractVersionTemplate: '^(?<version>.*)$',
+      managerFilePatterns: [
+        '/\\.html$/',
       ],
-      "matchStrings": [
-        "(\\s+|.*?@)(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n",
+      matchStrings: [
+        '(?<currentValue>\\d+\\.\\d+\\.\\d+)',
       ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    }
-  ]
+      datasourceTemplate: 'github-releases',
+      depNameTemplate: 'freelensapp/freelens',
+      versioningTemplate: 'semver',
+    },
+    {
+      customType: 'regex',
+      extractVersionTemplate: '^v?(?<version>.*)$',
+      managerFilePatterns: [
+        '/.*\\.ya?ml$/',
+        '/^\\.trunk/trunk.yaml/',
+        '/^\\.tool-versions$/',
+      ],
+      matchStrings: [
+        '(\\s+|.*?@)(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n',
+      ],
+      versioningTemplate: '{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}',
+    },
+  ],
 }
