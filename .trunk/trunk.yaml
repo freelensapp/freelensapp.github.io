@@ -23,7 +23,7 @@ lint:
     - markdownlint@0.45.0
     - git-diff-check
     - oxipng@9.1.5
-    - trufflehog@3.89.2
+    - trufflehog@3.90.0
     - yamlfmt@0.17.2
     - yamllint@1.37.1
   disabled:
