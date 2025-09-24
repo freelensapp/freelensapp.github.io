@@ -43,26 +43,8 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Setup pnpm
-        run: corepack enable
-
-      - name: Setup node
-        uses: actions/setup-node@v5
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-
-      - name: Install pnpm dependencies
-        id: install-pnpm
-        run: timeout 300 pnpm install --color=always --prefer-offline --frozen-lockfile
-        continue-on-error: true
-
-      - name: Install pnpm dependencies (retry)
-        if: steps.install-pnpm.outcome == 'failure'
-        run: timeout 300 pnpm install --color=always --prefer-offline --frozen-lockfile
-
       - name: Run biome migrate
-        run: pnpm biome:migrate | tee .github/pr_body.log
+        run: npx -y @biomejs/biome | tee .github/pr_body.log
 
       - name: Check for changes
         run: |
