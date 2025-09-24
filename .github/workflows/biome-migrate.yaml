@@ -36,7 +36,9 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Run biome migrate
-        run: npx -y @biomejs/biome | tee .github/pr_body.log
+        run: |
+          set -o pipefail
+          npx -y @biomejs/biome migrate | tee .github/pr_body.log
 
       - name: Check for changes
         run: |
