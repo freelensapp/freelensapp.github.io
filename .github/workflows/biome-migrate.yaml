@@ -22,7 +22,7 @@ jobs:
   biome-migrate:
     name: biome migrate
 
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     environment: automated
     timeout-minutes: 10
 
