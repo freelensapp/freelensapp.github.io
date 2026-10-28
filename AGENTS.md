@@ -193,9 +193,18 @@ Renovate from the Renovate dashboard.
 
 ### Updating Screenshots
 
-1. Replace the image file in `images/`
-2. Keep the same filename to avoid HTML changes, or update `index.html`
-   accordingly
+The screenshots and `logo.svg` are copies of `docs/images` of
+`freelensapp/freelens`, under the same names
+(`<os>-<view>-<light|dark>.jpg`), so that other resources can link them from
+<https://freelens.app/images/>. The page shows the `pods` view of the OS the
+visitor hovers, in the light or dark variant that matches
+`prefers-color-scheme`.
+
+1. Copy the new files from `docs/images` of `freelensapp/freelens` to
+   `images/`, keeping the names
+2. Keep the older `freelens-screenshot-*.png` and `freelens-logo*.png`: the
+   AppStream metainfo of Freelens and Flathub, and the Chocolatey package, link
+   them directly
 3. Run `trunk check` — oxipng will optimize PNG files automatically
 
 ## Troubleshooting

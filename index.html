@@ -68,11 +68,18 @@
         </p>
       </section>
       <section class="screenshot">
-        <img
-          src="images/freelens-screenshot-macos.png"
-          alt="Freelens Application Screenshot"
-          id="screenshot"
-        />
+        <picture>
+          <source
+            srcset="images/macos-pods-dark.jpg"
+            media="(prefers-color-scheme: dark)"
+            id="screenshot-dark"
+          />
+          <img
+            src="images/macos-pods-light.jpg"
+            alt="Freelens Application Screenshot"
+            id="screenshot"
+          />
+        </picture>
       </section>
       <section class="download-section">
         <table>
@@ -280,26 +287,29 @@
       <p>&copy; 2024-2026 Freelens Authors</p>
     </footer>
     <script>
+      function showScreenshot(os) {
+        document.getElementById("screenshot").src =
+          "images/" + os + "-pods-light.jpg";
+        document.getElementById("screenshot-dark").srcset =
+          "images/" + os + "-pods-dark.jpg";
+      }
+
       document
         .getElementById("screenshot")
         .addEventListener("click", function () {
           if (this.src.includes("macos")) {
-            document.getElementById("screenshot").src =
-              "images/freelens-screenshot-windows.png";
+            showScreenshot("windows");
           } else if (this.src.includes("windows")) {
-            document.getElementById("screenshot").src =
-              "images/freelens-screenshot-linux.png";
+            showScreenshot("linux");
           } else if (this.src.includes("linux")) {
-            document.getElementById("screenshot").src =
-              "images/freelens-screenshot-macos.png";
+            showScreenshot("macos");
           }
         });
 
       document
         .getElementById("macos-download-button")
         .addEventListener("mouseover", function () {
-          document.getElementById("screenshot").src =
-            "images/freelens-screenshot-macos.png";
+          showScreenshot("macos");
         });
       document
         .getElementById("macos-download-button")
@@ -330,8 +340,7 @@
       document
         .getElementById("windows-download-button")
         .addEventListener("mouseover", function () {
-          document.getElementById("screenshot").src =
-            "images/freelens-screenshot-windows.png";
+          showScreenshot("windows");
         });
       document
         .getElementById("windows-download-button")
@@ -362,8 +371,7 @@
       document
         .getElementById("linux-download-button")
         .addEventListener("mouseover", function () {
-          document.getElementById("screenshot").src =
-            "images/freelens-screenshot-linux.png";
+          showScreenshot("linux");
         });
       document
         .getElementById("linux-download-button")
