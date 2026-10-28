@@ -10,7 +10,7 @@
   "packageRules": [
     {
       "description": "Automerge for the Freelens version in the download links.",
-      "matchDepNames": ["freelens"],
+      "matchDepNames": ["freelensapp/freelens"],
       "automerge": true
     }
   ],

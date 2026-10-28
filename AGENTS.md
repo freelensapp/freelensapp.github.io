@@ -110,7 +110,8 @@ the PR after that commit of `github-actions[bot]`.
 ### Renovate PRs
 
 - All Renovate PRs get the `renovate` label
-- PRs for the `freelens` dependency (app version in HTML) are set to automerge
+- PRs for the `freelensapp/freelens` dependency (app version in HTML) are set
+  to automerge
 - `platformAutomerge: true` is enabled globally
 - Renovate is disabled in `.semanticCommitsDisabled` mode (no conventional
   commit prefixes)
