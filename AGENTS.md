@@ -19,7 +19,7 @@ and no server-side code.
 ├── style.css           # All page styles
 ├── README.md           # Project overview with badges
 ├── biome.jsonc         # Biome formatter/linter configuration
-├── .renovaterc.json5   # Renovate configuration for version bumps
+├── .renovaterc.json    # Renovate configuration for version bumps
 ├── .editorconfig       # Editor configuration
 ├── .gitignore          # Git ignore rules
 ├── .well-known/        # Domain verification files (e.g. Flathub)
@@ -68,7 +68,7 @@ Trunk's managed runtime system. There is no `package.json` in this repository.
 ## Version Management with Renovate
 
 Renovate is configured to automatically bump version numbers across the project.
-The configuration is in `.renovaterc.json5`.
+The configuration is in `.renovaterc.json`.
 
 ### Freelens App Version in HTML
 
@@ -82,8 +82,8 @@ The Freelens application version embedded in `index.html` (download links like
 
 ### Tool Versions with Inline Hints
 
-Versions in YAML files (`.trunk/trunk.yaml`, `.github/workflows/*.yaml`) and
-`.tool-versions` files use inline Renovate hints in comments:
+Versions in YAML files (`.trunk/trunk.yaml`, `.github/workflows/*.yaml`) use
+inline Renovate hints in comments:
 
 ```yaml
 # datasource=github-releases depName=trunk-io/trunk versioning=semver
@@ -92,6 +92,20 @@ Versions in YAML files (`.trunk/trunk.yaml`, `.github/workflows/*.yaml`) and
 These hints tell Renovate's custom regex manager how to find updates. When
 adding or updating a tool version in such files, include the appropriate hint
 comment.
+
+### Biome Version and `biome migrate`
+
+Biome is pinned in `.trunk/trunk.yaml` with a trailing `!`
+(`biome@2.6.3! # datasource=npm depName=@biomejs/biome`), so `trunk upgrade`
+leaves it alone and Renovate bumps it instead. The hint regex leaves the `!`
+out of the version.
+
+Renovate cannot run `biome migrate`, so `biome-migrate.yaml` does it on the
+Renovate branch itself: on a Renovate PR that changes `.trunk/trunk.yaml` or
+`biome.jsonc`, it runs `biome migrate` for the pinned version and commits the
+migrated `biome.jsonc` to the same branch, so the bump and its migration land
+in one PR. `gitIgnoredAuthors` in `.renovaterc.json` keeps Renovate updating
+the PR after that commit of `github-actions[bot]`.
 
 ### Renovate PRs
 
@@ -105,7 +119,10 @@ comment.
 
 ### Biome
 
-Biome handles HTML and CSS formatting. Configuration is in `biome.jsonc`.
+Biome formats CSS, JSON, Markdown and YAML, and lints Markdown and YAML, the
+same as upstream `freelensapp/freelens`. Configuration is in `biome.jsonc`.
+HTML is not formatted: the HTML formatter of Biome is off by default and
+would rewrite most of `index.html`.
 
 To check formatting:
 
@@ -125,14 +142,17 @@ If `trunk` CLI is not available locally, use `npx trunk` instead.
 
 Trunk orchestrates multiple linters and formatters. The enabled tools are:
 
-- **biome** — HTML/CSS formatting
-- **markdownlint** — Markdown linting
+- **biome** — CSS, JSON, Markdown and YAML formatting, Markdown and YAML
+  linting
 - **actionlint** — GitHub Actions workflow validation
 - **git-diff-check** — Detects unresolved merge conflicts
 - **oxipng** — PNG optimization
 - **trufflehog** — Secret scanning
-- **yamlfmt** — YAML formatting
-- **yamllint** — YAML linting
+- **yamllint** — YAML linting (config: `.yamllint.yaml`), only for the rules
+  Biome does not have yet: `quoted-strings` and `octal-values`. Biome never
+  adds or removes quotes, so the two do not conflict. A YAML rule that Biome
+  gains goes to `biome.jsonc` (as `key-duplicates` of yamllint did, now
+  `noDuplicateMapKeys`), and yamllint goes once Biome covers the rest.
 
 Trunk is configured to auto-format on pre-commit and run checks on pre-push
 (see `.trunk/trunk.yaml`).
@@ -190,7 +210,7 @@ Renovate from the Renovate dashboard.
 ### Renovate Not Opening Version Bump PRs
 
 1. Check the Renovate dashboard for this repository
-2. Verify `.renovaterc.json5` regex patterns still match the current HTML
+2. Verify `.renovaterc.json` regex patterns still match the current HTML
    structure
 3. Check if there are open Renovate PRs that need merging first
 
@@ -237,6 +257,7 @@ When reviewing code and proposing fixes:
    ```
 
    You can generate this from the terminal with:
+
    ```bash
    git diff -u -- path/to/file
    ```
@@ -268,9 +289,9 @@ When reviewing code and proposing fixes:
    - Use GitHub's `suggestion` block for small targeted fixes so the PR
      author can accept the change with a single click:
 
-     ````suggestion
+     ```suggestion
      <same unified-diff format as shown above>
-     ````
+     ```
 
    - For larger multi-file changes, use `diff -u` blocks in a regular
      comment instead, with the proposed commit subject shown first
