@@ -105,7 +105,10 @@ comment.
 
 ### Biome
 
-Biome handles HTML and CSS formatting. Configuration is in `biome.jsonc`.
+Biome formats CSS, JSON, Markdown and YAML, and lints Markdown and YAML, the
+same as upstream `freelensapp/freelens`. Configuration is in `biome.jsonc`.
+HTML is not formatted: the HTML formatter of Biome is off by default and
+would rewrite most of `index.html`.
 
 To check formatting:
 
@@ -125,14 +128,17 @@ If `trunk` CLI is not available locally, use `npx trunk` instead.
 
 Trunk orchestrates multiple linters and formatters. The enabled tools are:
 
-- **biome** — HTML/CSS formatting
-- **markdownlint** — Markdown linting
+- **biome** — CSS, JSON, Markdown and YAML formatting, Markdown and YAML
+  linting
 - **actionlint** — GitHub Actions workflow validation
 - **git-diff-check** — Detects unresolved merge conflicts
 - **oxipng** — PNG optimization
 - **trufflehog** — Secret scanning
-- **yamlfmt** — YAML formatting
-- **yamllint** — YAML linting
+- **yamllint** — YAML linting (config: `.yamllint.yaml`), only for the rules
+  Biome does not have yet: `quoted-strings` and `octal-values`. Biome never
+  adds or removes quotes, so the two do not conflict. A YAML rule that Biome
+  gains goes to `biome.jsonc` (as `key-duplicates` of yamllint did, now
+  `noDuplicateMapKeys`), and yamllint goes once Biome covers the rest.
 
 Trunk is configured to auto-format on pre-commit and run checks on pre-push
 (see `.trunk/trunk.yaml`).
@@ -237,6 +243,7 @@ When reviewing code and proposing fixes:
    ```
 
    You can generate this from the terminal with:
+
    ```bash
    git diff -u -- path/to/file
    ```
@@ -268,9 +275,9 @@ When reviewing code and proposing fixes:
    - Use GitHub's `suggestion` block for small targeted fixes so the PR
      author can accept the change with a single click:
 
-     ````suggestion
+     ```suggestion
      <same unified-diff format as shown above>
-     ````
+     ```
 
    - For larger multi-file changes, use `diff -u` blocks in a regular
      comment instead, with the proposed commit subject shown first
