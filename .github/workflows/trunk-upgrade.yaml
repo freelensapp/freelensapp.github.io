@@ -10,7 +10,7 @@ on:
     paths:
       - .trunk/**
   schedule:
-    - cron: 27 5 * * *
+    - cron: 2 6 * * *
   workflow_dispatch: {}
 
 permissions:
@@ -21,11 +21,23 @@ jobs:
   trunk-upgrade:
     name: trunk upgrade
 
-    runs-on: ubuntu-24.04-arm
-    environment: automated
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runs-on: ubuntu-24.04-arm
+            arch: arm64
 
-    if: github.event_name != 'issue_comment' || (startsWith(github.event.issue.title, 'Automated trunk upgrade') && contains(github.event.comment.body,
+    runs-on: ${{ matrix.runs-on }}
+    environment: automated
+    timeout-minutes: 10
+
+    if: >-
+      github.event_name != 'issue_comment' || (startsWith(github.event.issue.title, 'Automated trunk upgrade') && contains(github.event.comment.body,
       '/rerun'))
+
+    env:
+      DO_NOT_TRACK: "1"
 
     steps:
       - name: Checkout
@@ -52,14 +64,14 @@ jobs:
 
       - name: Trunk Check
         if: env.changes == 'true'
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v2.0.0
         with:
           check-mode: all
         continue-on-error: true
 
       - name: Commit and push to branch
         if: env.changes == 'true'
-        uses: EndBug/add-and-commit@v10
+        uses: EndBug/add-and-commit@v11
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           default_author: github_actions
@@ -76,7 +88,8 @@ jobs:
               --head automated/trunk-upgrade \
               --title "Automated trunk upgrade $(cat .github/pr_title.log) [skip ci]" \
               --body-file .github/pr_body.log \
-              --label automated
+              --label automated \
+              --label trunk
           else
             gh pr edit automated/trunk-upgrade \
               --title "Automated trunk upgrade $(cat .github/pr_title.log) [skip ci]" \
