@@ -19,7 +19,7 @@ and no server-side code.
 ├── style.css           # All page styles
 ├── README.md           # Project overview with badges
 ├── biome.jsonc         # Biome formatter/linter configuration
-├── .renovaterc.json5   # Renovate configuration for version bumps
+├── .renovaterc.json    # Renovate configuration for version bumps
 ├── .editorconfig       # Editor configuration
 ├── .gitignore          # Git ignore rules
 ├── .well-known/        # Domain verification files (e.g. Flathub)
@@ -68,7 +68,7 @@ Trunk's managed runtime system. There is no `package.json` in this repository.
 ## Version Management with Renovate
 
 Renovate is configured to automatically bump version numbers across the project.
-The configuration is in `.renovaterc.json5`.
+The configuration is in `.renovaterc.json`.
 
 ### Freelens App Version in HTML
 
@@ -82,8 +82,8 @@ The Freelens application version embedded in `index.html` (download links like
 
 ### Tool Versions with Inline Hints
 
-Versions in YAML files (`.trunk/trunk.yaml`, `.github/workflows/*.yaml`) and
-`.tool-versions` files use inline Renovate hints in comments:
+Versions in YAML files (`.trunk/trunk.yaml`, `.github/workflows/*.yaml`) use
+inline Renovate hints in comments:
 
 ```yaml
 # datasource=github-releases depName=trunk-io/trunk versioning=semver
@@ -190,7 +190,7 @@ Renovate from the Renovate dashboard.
 ### Renovate Not Opening Version Bump PRs
 
 1. Check the Renovate dashboard for this repository
-2. Verify `.renovaterc.json5` regex patterns still match the current HTML
+2. Verify `.renovaterc.json` regex patterns still match the current HTML
    structure
 3. Check if there are open Renovate PRs that need merging first
 

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommitsDisabled"],
+  "addLabels": ["renovate"],
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Automerge for the Freelens version in the download links.",
+      "matchDepNames": ["freelens"],
+      "automerge": true
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "The Freelens version in the download links of the HTML pages.",
+      "customType": "regex",
+      "extractVersionTemplate": "^(?<version>.*)$",
+      "managerFilePatterns": ["/\\.html$/"],
+      "matchStrings": ["(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "freelensapp/freelens",
+      "versioningTemplate": "semver"
+    },
+    {
+      "description": "Renovate hints after a comment: `# datasource=<datasource> depName=<depName>`.",
+      "customType": "regex",
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/", "/^\\.trunk/trunk\\.yaml$/"],
+      "matchStrings": [
+        "(\\s+|.*?@)(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ]
+}
