@@ -60,9 +60,12 @@ table {
   margin-bottom: 20px;
 }
 
+/* The screenshots of each OS differ in aspect ratio; the box keeps the one of
+   the tallest (macOS), so the buttons below do not move when it switches. */
 .screenshot img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 3164 / 1922;
+  object-fit: contain;
   margin-bottom: 20px;
 }
 
