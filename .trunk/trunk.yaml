@@ -63,7 +63,7 @@ lint:
       run_timeout: 1m
   enabled:
     - actionlint@1.7.12
-    - biome@2.6.3
+    - biome@2.6.3! # datasource=npm depName=@biomejs/biome
     - git-diff-check
     - oxipng@10.1.1
     - trufflehog@3.95.8

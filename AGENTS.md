@@ -93,6 +93,20 @@ These hints tell Renovate's custom regex manager how to find updates. When
 adding or updating a tool version in such files, include the appropriate hint
 comment.
 
+### Biome Version and `biome migrate`
+
+Biome is pinned in `.trunk/trunk.yaml` with a trailing `!`
+(`biome@2.6.3! # datasource=npm depName=@biomejs/biome`), so `trunk upgrade`
+leaves it alone and Renovate bumps it instead. The hint regex leaves the `!`
+out of the version.
+
+Renovate cannot run `biome migrate`, so `biome-migrate.yaml` does it on the
+Renovate branch itself: on a Renovate PR that changes `.trunk/trunk.yaml` or
+`biome.jsonc`, it runs `biome migrate` for the pinned version and commits the
+migrated `biome.jsonc` to the same branch, so the bump and its migration land
+in one PR. `gitIgnoredAuthors` in `.renovaterc.json` keeps Renovate updating
+the PR after that commit of `github-actions[bot]`.
+
 ### Renovate PRs
 
 - All Renovate PRs get the `renovate` label
