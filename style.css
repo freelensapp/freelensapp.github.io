@@ -1,3 +1,29 @@
+/* Colors follow the color scheme of the system. The :root selector outranks
+   the html rule of Bulma, which is loaded after this file. */
+:root {
+  color-scheme: light dark;
+  --page-background: #f4f4f4;
+  --main-background: white;
+  --main-color: #4a4a4a;
+  --links-background: #ffffff;
+  --links-border: #ccc;
+  --links-color: black;
+  --links-hover-background: #f1f1f1;
+  background-color: var(--page-background);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-background: #1e2124;
+    --main-background: #262b2f;
+    --main-color: #e0e0e0;
+    --links-background: #2f3439;
+    --links-border: #45494d;
+    --links-color: #e0e0e0;
+    --links-hover-background: #3a3f44;
+  }
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,7 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #009688 0%, #f4f4f4 100%);
+  background: linear-gradient(180deg, #009688 0%, var(--page-background) 100%);
 }
 
 header {
@@ -45,7 +71,8 @@ main {
   max-width: 800px;
   margin: 20px;
   padding: 20px;
-  background-color: white;
+  background-color: var(--main-background);
+  color: var(--main-color);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); /* Ombra interna su tutto il perimetro del box */
   width: 90%;
   border-radius: 8px; /* Aggiunto bordo arrotondato */
@@ -120,7 +147,7 @@ ion-icon {
 
 .download-links {
   display: none;
-  background-color: #ffffff; /* Modificato a bianco per maggiore contrasto */
+  background-color: var(--links-background);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   position: absolute;
@@ -128,7 +155,7 @@ ion-icon {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid #ccc; /* Aggiunto bordo */
+  border: 1px solid var(--links-border); /* Aggiunto bordo */
   border-radius: 4px; /* Aggiunto bordo arrotondato */
   margin-bottom: 20px; /* Aggiunto margine inferiore */
   max-height: calc(100vh - 150px); /* Limite altezza massima del pannellino */
@@ -144,14 +171,14 @@ ion-icon {
 }
 
 .download-links a {
-  color: black;
+  color: var(--links-color);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .download-links a:hover {
-  background-color: #f1f1f1;
+  background-color: var(--links-hover-background);
 }
 
 .social-container {
