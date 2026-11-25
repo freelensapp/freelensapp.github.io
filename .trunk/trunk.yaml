@@ -82,7 +82,7 @@ lint:
   enabled:
     - svgo@4.1.0
     - actionlint@1.17.1
-    - biome@2.6.8! # datasource=npm depName=@biomejs/biome
+    - biome@2.6.9! # datasource=npm depName=@biomejs/biome
     - git-diff-check
     - oxipng@10.1.1
     - trufflehog@3.100.0
