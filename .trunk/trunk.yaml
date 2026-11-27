@@ -85,7 +85,7 @@ lint:
     - biome@2.6.8! # datasource=npm depName=@biomejs/biome
     - git-diff-check
     - oxipng@10.1.1
-    - trufflehog@3.100.0
+    - trufflehog@3.100.1
     - yamllint@1.38.0
   disabled:
     - checkov
